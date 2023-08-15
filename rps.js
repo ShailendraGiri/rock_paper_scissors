@@ -1,27 +1,32 @@
 let newHumanScore=0;
 let newComputerScore=0;
-console.log("Welcome to the rock, paper, scissors game.")
-console.log("The game will be played for 5 rounds and the winner will be decided.")
-console.log("Please enter a choice between rock, paper and scissors.")
-//for human choice//
-function getHumanChoice(){
-    let humanChoice=prompt("please enter a choice: ");
-    humanChoice=humanChoice.toLowerCase();
-    console.log("You chose "+humanChoice);
-    return humanChoice;
-}
 
-//for computer choice//
+const selection=document.querySelectorAll("button");//selects all the button elements//
+//code can be shortened using arrow functions//
+ selection.forEach(button => {//anonymous function//
+    button.addEventListener('click',() =>{
+        const newDiv=document.createElement("div");
+        newDiv.textContent="You chose "+button.textContent;
+        document.body.appendChild(newDiv);
+        let humanChoice=button.textContent;
+        return humanChoice;
+ });
+});
+ 
+
+//for computer choice
 function getComputerChoice(){
     const rps=["rock","paper","scissors"];
     let x=Math.floor(Math.random()*3);
     let computerChoice=rps[x];
-    console.log("The computer chose "+computerChoice);
+    const newDiv=document.createElement("div");
+    newDiv.textContent="The computer chose "+computerChoice;
+    document.body.appendChild(newDiv);
     return computerChoice;
 }
     
 
-
+/* for deactivating the code
 //conditions for draw, win and loss
 function playRound(humanChoice,computerChoice){
     if(humanChoice==computerChoice){
@@ -53,7 +58,7 @@ function playRound(humanChoice,computerChoice){
     }else if (newHumanScore<newComputerScore){
         console.log("The computer won");
     }
-
+*/
 
 
 
