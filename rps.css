@@ -3,4 +3,10 @@ body{
 }
 button{
     cursor:pointer;
+    font-size:16px;
+    margin-bottom: 16px;
+}
+
+#winnerAnnouncement{
+    font-weight: bold;
 }
