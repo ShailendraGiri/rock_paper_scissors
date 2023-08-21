@@ -1,12 +1,22 @@
 body{
     text-align: center;
 }
+p{
+    font-size: 20px;
+    font-weight: bold;
+}
 button{
     cursor:pointer;
     font-size:16px;
     margin-bottom: 16px;
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
 #winnerAnnouncement{
+    font-weight: bold;
+}
+
+#individualResult{
     font-weight: bold;
 }

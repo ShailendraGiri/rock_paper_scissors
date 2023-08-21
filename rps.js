@@ -3,9 +3,10 @@ let newComputerScore=0;
 
 
 const selection=document.querySelectorAll("button");//selects all the button elements//
-//appending text content to empty divs remaining//
+
  selection.forEach(button => {//anonymous function//
     button.addEventListener('click',() =>{
+        if (newHumanScore<5 && newComputerScore<5){
         let humanChoice=button.textContent;
         const newDiv=document.querySelector("#humanChoice");
         newDiv.textContent="You chose "+button.textContent;
@@ -20,7 +21,6 @@ const selection=document.querySelectorAll("button");//selects all the button ele
                 //conditions for draw, win and loss
         function playRound(humanChoice,computerChoice){
             if(humanChoice==computerChoice){
-                console.log("It's a draw");
             const newDiv2=document.querySelector("#individualResult");
             newDiv2.textContent="It's a draw";
             
@@ -48,19 +48,31 @@ const selection=document.querySelectorAll("button");//selects all the button ele
         const newDiv4=document.querySelector("#computerTotal");
         newDiv4.textContent="The computer's total score is "+newComputerScore;
         
-    const newDiv5=document.querySelector("#winnerAnnouncement");
-    if (newHumanScore==5||newComputerScore==5){
-       if(newHumanScore==newComputerScore){
-           newDiv5.textContent="The result is here. The game is a draw."
-       }else if (newHumanScore>newComputerScore){
-        newDiv5.textContent="The result is here. You are the winner."
-       }else if (newHumanScore<newComputerScore){
-        newDiv5.textContent="The result is here. The computer is the winner."
-       }
-    }
- });
-});
- 
+        } 
+        checkScores();
+        function checkScores(){
+        if (newHumanScore==5||newComputerScore==5) {
+            const newDiv5=document.querySelector("#winnerAnnouncement");
+            if(newHumanScore==newComputerScore){
+                newDiv5.textContent="The result is here. The game is a draw."
+            }else if (newHumanScore>newComputerScore){
+             newDiv5.textContent="The result is here. You are the winner."
+            }else if (newHumanScore<newComputerScore){
+             newDiv5.textContent="The result is here. The computer is the winner."
+            }
+            setTimeout(()=>{
+                const userResponse=confirm("Do you want to start a new game?");
+             if (userResponse){
+                location.reload();
+             }
+            }, 500);
+             
+        };
+    };
+ });//end of addEventListener//
+});//end of forEach//
+   
+
 
 
 
